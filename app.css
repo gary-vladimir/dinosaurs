@@ -48,6 +48,7 @@ footer {
 }
 
 .card > form > input {
+    text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 98.5%;
@@ -61,26 +62,39 @@ footer {
     outline: none;
 }
 
-#imperialB,
-#metricB {
-    display: unset;
-    width: 20px;
-    height: 20px;
-    margin: 0px;
+#containerUnits {
+    border: 1px solid #00072d;
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 35px;
+    margin-bottom: 10px;
+    display: flex;
 }
 
-#imperial,
-#metric {
-    margin-right: 10px;
+#compareButton {
+    position: absolute;
+    text-align: center;
+    border: 1px solid white;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    transition: 0.3s;
+    bottom: 20px;
+    left: calc(50% - 75px);
 }
 
-#metricB {
-    margin-right: 50px;
+#compareButton:hover {
+    bottom: 30px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 15px 2px -2px #00244b;
 }
 
 @media (max-width: 600px) {
     .card {
         width: 320px;
-        height: 530px;
+        height: 580px;
     }
 }

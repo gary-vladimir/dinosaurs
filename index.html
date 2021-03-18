@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="app.css" />
-        <title>Dinosaurs</title>
+        <title>Dinographic</title>
     </head>
     <body>
         <header>Natural History Museum</header>
@@ -16,10 +16,36 @@
                 <input type="text" name="name" /><br />
                 <label for="units">Units:</label><br />
 
-                <label for="metric" id="metric">Metric: </label>
-                <input type="radio" name="metric" id="metricB" />
-                <label for="imperial" id="imperial">Imperial: </label>
-                <input type="radio" name="imperial" id="imperialB" />
+                <div id="containerUnits">
+                    <input
+                        type="radio"
+                        id="metricButton"
+                        name="gender"
+                        value="female"
+                        checked
+                    />
+                    <label for="metricButton" style="margin-right: 30px"
+                        >Metric</label
+                    ><br />
+                    <input
+                        type="radio"
+                        id="imperialButton"
+                        name="gender"
+                        value="other"
+                    />
+                    <label for="imperialButton">Imperial</label>
+                </div>
+
+                <label for="height">Enter your height: (cm)</label><br />
+                <input type="number" name="height" /><br />
+
+                <label for="height">Enter your weight: (kg)</label><br />
+                <input type="number" name="height" /><br />
+
+                <label for="height">Enter your diet: </label><br />
+                <input type="number" name="height" /><br />
+
+                <div id="compareButton">Compare Me!</div>
             </form>
         </div>
         <footer>17/03/2021</footer>
