@@ -100,12 +100,13 @@ footer {
     display: none;
     gap: 1vh;
     grid-template-columns: auto repeat(3, 30vh) auto;
-    grid-template-rows: 0vh repeat(3, 35vh) 0vh;
+    grid-template-rows: 0vh repeat(3, 35vh) 10vh 0vh;
     grid-template-areas:
         '. . . . .'
         '. c1 c2 c3 .'
         '. c4 c5 c6 .'
         '. c7 c8 c9 .'
+        '. ab . . .'
         '. . . . .';
 }
 #card1 {
@@ -135,6 +136,9 @@ footer {
 #card9 {
     grid-area: c9;
 }
+#ab {
+    grid-area: ab;
+}
 
 .nameCard {
     text-align: center;
@@ -146,14 +150,16 @@ footer {
     margin-bottom: -20px;
 }
 
+#ab {
+    border-radius: 25px;
+    width: 110px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid white;
+}
+
 #fact {
     padding: 15px;
     text-align: center;
-}
-
-@media (max-width: 600px) {
-    .card {
-        width: 320px;
-        height: 580px;
-    }
 }
