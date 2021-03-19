@@ -28,6 +28,8 @@ const enterHeight = document.getElementById('enterYourHeight');
 const enterWeight = document.getElementById('enterYourWeight');
 const grid = document.getElementById('gridContainer');
 const card = document.querySelector('.card');
+const footer = document.getElementById('footer');
+const goAgainButton = document.getElementById('goAgainButton');
 
 compareButton.addEventListener('click', displayGrid);
 
@@ -44,4 +46,6 @@ function changeToMetric() {
 function displayGrid() {
     grid.style.display = 'grid';
     card.style.display = 'none';
+    footer.style.position = 'unset';
+    goAgainButton.style.display = 'unset';
 }

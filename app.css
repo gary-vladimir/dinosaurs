@@ -93,14 +93,14 @@ footer {
     box-shadow: 0 15px 2px -2px #00244b;
 }
 #gridContainer > div {
-    background-color: rgba(211, 211, 211, 0.11);
+    background-color: #073366;
 }
 
 #gridContainer {
     display: none;
     gap: 1vh;
-    grid-template-columns: auto repeat(3, 25vh) auto;
-    grid-template-rows: 0vh repeat(3, 25vh) 0vh;
+    grid-template-columns: auto repeat(3, 30vh) auto;
+    grid-template-rows: 0vh repeat(3, 35vh) 0vh;
     grid-template-areas:
         '. . . . .'
         '. c1 c2 c3 .'
@@ -136,7 +136,18 @@ footer {
     grid-area: c9;
 }
 
-#nameCard {
+.nameCard {
+    text-align: center;
+}
+
+.dinoImg {
+    width: 100%;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+#fact {
+    padding: 15px;
     text-align: center;
 }
 
