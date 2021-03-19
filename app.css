@@ -92,6 +92,53 @@ footer {
     cursor: pointer;
     box-shadow: 0 15px 2px -2px #00244b;
 }
+#gridContainer > div {
+    background-color: rgba(211, 211, 211, 0.11);
+}
+
+#gridContainer {
+    display: none;
+    gap: 1vh;
+    grid-template-columns: auto repeat(3, 25vh) auto;
+    grid-template-rows: 0vh repeat(3, 25vh) 0vh;
+    grid-template-areas:
+        '. . . . .'
+        '. c1 c2 c3 .'
+        '. c4 c5 c6 .'
+        '. c7 c8 c9 .'
+        '. . . . .';
+}
+#card1 {
+    grid-area: c1;
+}
+#card2 {
+    grid-area: c2;
+}
+#card3 {
+    grid-area: c3;
+}
+#card4 {
+    grid-area: c4;
+}
+#card5 {
+    grid-area: c5;
+}
+#card6 {
+    grid-area: c6;
+}
+#card7 {
+    grid-area: c7;
+}
+#card8 {
+    grid-area: c8;
+}
+#card9 {
+    grid-area: c9;
+}
+
+#nameCard {
+    text-align: center;
+}
 
 @media (max-width: 600px) {
     .card {

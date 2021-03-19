@@ -20,8 +20,9 @@
                     <input
                         type="radio"
                         id="metricButton"
-                        name="gender"
-                        value="female"
+                        name="unit"
+                        value="metros"
+                        onclick="changeToMetric()"
                         checked
                     />
                     <label for="metricButton" style="margin-right: 30px"
@@ -30,16 +31,21 @@
                     <input
                         type="radio"
                         id="imperialButton"
-                        name="gender"
-                        value="other"
+                        name="unit"
+                        value="imperials"
+                        onclick="changeToImperial()"
                     />
                     <label for="imperialButton">Imperial</label>
                 </div>
 
-                <label for="height">Enter your height: (cm)</label><br />
+                <label for="height" id="enterYourHeight"
+                    >Enter your height: (cm)</label
+                ><br />
                 <input type="number" name="height" /><br />
 
-                <label for="weight">Enter your weight: (kg)</label><br />
+                <label for="weight" id="enterYourWeight"
+                    >Enter your weight: (kg)</label
+                ><br />
                 <input type="number" name="weight" /><br />
 
                 <label for="diet">Enter your diet: </label><br />
@@ -52,6 +58,20 @@
                 <div id="compareButton">Compare Me!</div>
             </form>
         </div>
+
+        <div id="gridContainer">
+            <div id="card1"><p id="nameCard">Name</p></div>
+            <div id="card2">card2</div>
+            <div id="card3">card3</div>
+            <div id="card4">card4</div>
+            <div id="card5">card5</div>
+            <div id="card6">card6</div>
+            <div id="card7">card7</div>
+            <div id="card8">card8</div>
+            <div id="card9">card9</div>
+        </div>
         <footer>17/03/2021</footer>
+
+        <script src="app.js"></script>
     </body>
 </html>
