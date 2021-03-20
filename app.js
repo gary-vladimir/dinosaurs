@@ -1,4 +1,4 @@
-// Create Dino Constructor
+// Create Dino Constructor **checked
 
 // Create Dino Objects
 
@@ -19,7 +19,7 @@
 
 // Add tiles to DOM
 
-// Remove form from screen
+// Remove form from screen **checked
 
 // On button click, prepare and display infographic
 
@@ -42,6 +42,7 @@ function changeToMetric() {
     enterHeight.innerHTML = 'Enter your height: (cm)';
 }
 
+// Remove form from screen
 function displayGrid() {
     grid.style.display = 'grid';
     card.style.display = 'none';
@@ -134,6 +135,7 @@ function jsonDinoData() {
     return dinos;
 }
 
+// dino constructor
 function DinoConstructor(data, units) {
     this.diet = data.diet;
     this.where = data.where;
@@ -149,3 +151,52 @@ function DinoConstructor(data, units) {
         this.height = data.height;
     }
 }
+
+// Store the prototype dinosaur with methods,
+// assign the prototype to the constructor
+//units are imperial
+const protoDino = {
+    compareWeight: function (humanWeight) {
+        if (humanWeight > this.weight) {
+            return `you weigh ${(humanWeight / this.weight).toFixed(
+                2 //to only display first 2 decimals
+            )} times more than ${this.species}!`;
+        } else if (humanWeight === this.weight) {
+            return `you and ${this.species} weigh the same`;
+        } else {
+            return `${this.species} weight ${(
+                this.weight / humanWeight
+            ).toFixed(2)} times more than you`;
+        }
+    },
+    compareHeight: function (humanHeight) {
+        if (humanHeight > this.height) {
+            return `you are ${(humanHeight / this.height).toFixed(
+                2 //to only display first 2 decimals
+            )} times more tall than ${this.species}!`;
+        } else if (humanHeight === this.height) {
+            return `you and ${this.species} are the same height`;
+        } else {
+            return `${this.species} is ${(this.height / humanHeight).toFixed(
+                2
+            )} times taller than you`;
+        }
+    },
+
+    compareDiet: function (humanDiet) {
+        if (humanDiet === this.diet) {
+            return `you eat the same as ${this.species}!`;
+        } else {
+            return `you two eat very diferent`;
+        }
+    },
+};
+
+DinoConstructor.prototype = protoDino;
+
+const velociraptor = new DinoConstructor(jsonDinoData()[0], 'm');
+
+console.log(velociraptor);
+console.log(velociraptor.compareWeight(120));
+console.log(velociraptor.compareHeight(70.8));
+console.log(velociraptor.compareDiet('omnivore'));
