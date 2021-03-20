@@ -1,28 +1,3 @@
-// Create Dino Constructor **checked
-
-// Create Dino Objects
-
-// Create Human Object
-
-// Use IIFE to get human data from form
-
-// Create Dino Compare Method 1
-// NOTE: Weight in JSON file is in lbs, height in inches.
-
-// Create Dino Compare Method 2
-// NOTE: Weight in JSON file is in lbs, height in inches.
-
-// Create Dino Compare Method 3
-// NOTE: Weight in JSON file is in lbs, height in inches.
-
-// Generate Tiles for each Dino in Array
-
-// Add tiles to DOM
-
-// Remove form from screen **checked
-
-// On button click, prepare and display infographic
-
 const compareButton = document.getElementById('compareButton');
 const enterHeight = document.getElementById('enterYourHeight');
 const enterWeight = document.getElementById('enterYourWeight');
@@ -30,29 +5,24 @@ const grid = document.getElementById('gridContainer');
 const card = document.querySelector('.card');
 const footer = document.getElementById('footer');
 
-compareButton.addEventListener('click', displayGrid);
-
-function changeToImperial() {
-    enterWeight.innerHTML = 'Enter your weight: (lbs)';
-    enterHeight.innerHTML = 'Enter your height: (Feet)';
+// Create Dino Constructor
+function DinoConstructor(data, units) {
+    this.diet = data.diet;
+    this.where = data.where;
+    this.species = data.species;
+    this.when = data.when;
+    this.fact = data.fact;
+    //the data comes in imperial so we check units
+    if (units === 'm') {
+        this.weight = Math.round(data.weight / 2.21);
+        this.height = Math.round(data.height * 2.54);
+    } else {
+        this.weight = data.weight;
+        this.height = data.height;
+    }
 }
 
-function changeToMetric() {
-    enterWeight.innerHTML = 'Enter your weight: (kg)';
-    enterHeight.innerHTML = 'Enter your height: (cm)';
-}
-
-// Remove form from screen
-function displayGrid() {
-    grid.style.display = 'grid';
-    card.style.display = 'none';
-    footer.style.position = 'unset';
-}
-
-/**
- * The raw dinosaur data, put in function to avoid global variable
- * the function returns an array of dino objects
- */
+// Create Dino Objects
 function jsonDinoData() {
     const dinos = [
         {
@@ -135,27 +105,20 @@ function jsonDinoData() {
     return dinos;
 }
 
-// dino constructor
-function DinoConstructor(data, units) {
-    this.diet = data.diet;
-    this.where = data.where;
-    this.species = data.species;
-    this.when = data.when;
-    this.fact = data.fact;
-    //the data comes in imperial so we check units
-    if (units === 'm') {
-        this.weight = Math.round(data.weight / 2.21);
-        this.height = Math.round(data.height * 2.54);
-    } else {
-        this.weight = data.weight;
-        this.height = data.height;
-    }
-}
+// Create Human Object
+const human = {
+    name: '',
+    height: '',
+    weight: '',
+    diet: '',
+};
 
-// Store the prototype dinosaur with methods,
-// assign the prototype to the constructor
-//units are imperial
+// Use IIFE to get human data from form
+
+//create dino methods
 const protoDino = {
+    // Create Dino Compare Method 1
+    // NOTE: Weight in JSON file is in lbs, height in inches.
     compareWeight: function (humanWeight) {
         if (humanWeight > this.weight) {
             return `you weigh ${(humanWeight / this.weight).toFixed(
@@ -169,6 +132,8 @@ const protoDino = {
             ).toFixed(2)} times more than you`;
         }
     },
+    // Create Dino Compare Method 2
+    // NOTE: Weight in JSON file is in lbs, height in inches.
     compareHeight: function (humanHeight) {
         if (humanHeight > this.height) {
             return `you are ${(humanHeight / this.height).toFixed(
@@ -182,7 +147,8 @@ const protoDino = {
             )} times taller than you`;
         }
     },
-
+    // Create Dino Compare Method 3
+    // NOTE: Weight in JSON file is in lbs, height in inches.
     compareDiet: function (humanDiet) {
         if (humanDiet === this.diet) {
             return `you eat the same as ${this.species}!`;
@@ -192,11 +158,35 @@ const protoDino = {
     },
 };
 
+// Generate Tiles for each Dino in Array
+
+// Add tiles to DOM
+
+// Remove form from screen
+function displayGrid() {
+    grid.style.display = 'grid';
+    card.style.display = 'none';
+    footer.style.position = 'unset';
+}
+
+// On button click, prepare and display infographic
+compareButton.addEventListener('click', displayGrid);
+
+// change units
+function changeToImperial() {
+    enterWeight.innerHTML = 'Enter your weight: (lbs)';
+    enterHeight.innerHTML = 'Enter your height: (Feet)';
+}
+function changeToMetric() {
+    enterWeight.innerHTML = 'Enter your weight: (kg)';
+    enterHeight.innerHTML = 'Enter your height: (cm)';
+}
+
 DinoConstructor.prototype = protoDino;
 
-const velociraptor = new DinoConstructor(jsonDinoData()[0], 'm');
+const velociraptor = new DinoConstructor(jsonDinoData()[7], 'i');
 
 console.log(velociraptor);
 console.log(velociraptor.compareWeight(120));
 console.log(velociraptor.compareHeight(70.8));
-console.log(velociraptor.compareDiet('omnivore'));
+console.log(velociraptor.compareDiet('carnivore'));
