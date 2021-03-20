@@ -1,6 +1,10 @@
 const compareButton = document.getElementById('compareButton');
 const enterHeight = document.getElementById('enterYourHeight');
 const enterWeight = document.getElementById('enterYourWeight');
+const inputName = document.getElementById('inputName');
+const inputHeight = document.getElementById('inputHeight');
+const inputWeight = document.getElementById('inputWeight');
+const inputDiet = document.getElementById('diet');
 const grid = document.getElementById('gridContainer');
 const card = document.querySelector('.card');
 const footer = document.getElementById('footer');
@@ -106,14 +110,25 @@ function jsonDinoData() {
 }
 
 // Create Human Object
-const human = {
-    name: '',
-    height: '',
-    weight: '',
-    diet: '',
-};
+const human = {};
 
 // Use IIFE to get human data from form
+const getHumanData = (function () {
+    let name = '';
+    let height = 0;
+    let weight = 0;
+    let diet = '';
+    return function () {
+        name = inputName.value;
+        height = inputHeight.value;
+        weight = inputWeight.value;
+        diet = inputDiet.value;
+        human.name = name;
+        human.height = height;
+        human.weight = weight;
+        human.diet = diet;
+    };
+})();
 
 //create dino methods
 const protoDino = {
@@ -167,6 +182,8 @@ function displayGrid() {
     grid.style.display = 'grid';
     card.style.display = 'none';
     footer.style.position = 'unset';
+    getHumanData();
+    console.log(human);
 }
 
 // On button click, prepare and display infographic
