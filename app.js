@@ -174,8 +174,28 @@ const protoDino = {
 };
 
 // Generate Tiles for each Dino in Array
+function createDinoArray(units) {
+    const dinos = jsonDinoData();
+    const dinoArray = [];
+    dinos.forEach(function (dino) {
+        dinoArray.push(new DinoConstructor(dino, units));
+    });
+    dinoArray.splice(4, 0, 'human');
+    return dinoArray;
+}
 
 // Add tiles to DOM
+function addTilesDOM() {
+    const dinoArray = createDinoArray('i');
+    let i = 1;
+    dinoArray.forEach(function (dino) {
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `<p class="nameCard">${dino.species}</p> <img src="images/${dino.species}.png" alt="dino1" class="dinoImg" /> <div id="fact">${dino.fact}</div> `;
+        newDiv.setAttribute('id', 'card' + i);
+        grid.appendChild(newDiv);
+        i += 1;
+    });
+}
 
 // Remove form from screen
 function displayGrid() {
@@ -184,6 +204,7 @@ function displayGrid() {
     footer.style.position = 'unset';
     getHumanData();
     console.log(human);
+    addTilesDOM();
 }
 
 // On button click, prepare and display infographic
@@ -201,9 +222,10 @@ function changeToMetric() {
 
 DinoConstructor.prototype = protoDino;
 
-const velociraptor = new DinoConstructor(jsonDinoData()[7], 'i');
+const velociraptor = new DinoConstructor(jsonDinoData()[6], 'i');
 
 console.log(velociraptor);
 console.log(velociraptor.compareWeight(120));
 console.log(velociraptor.compareHeight(70.8));
 console.log(velociraptor.compareDiet('carnivore'));
+console.log(createDinoArray('i'));
