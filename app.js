@@ -127,6 +127,7 @@ const getHumanData = (function () {
         human.height = height;
         human.weight = weight;
         human.diet = diet;
+        human.species = 'human';
     };
 })();
 
@@ -190,7 +191,11 @@ function addTilesDOM() {
     let i = 1;
     dinoArray.forEach(function (dino) {
         const newDiv = document.createElement('div');
-        newDiv.innerHTML = `<p class="nameCard">${dino.species}</p> <img src="images/${dino.species}.png" alt="dino1" class="dinoImg" /> <div id="fact">${dino.fact}</div> `;
+        if (dino === 'human') {
+            newDiv.innerHTML = `<p class="nameCard">${human.name}</p> <img src="images/${human.species}.png" alt="dino1" class="dinoImg" />`;
+        } else {
+            newDiv.innerHTML = `<p class="nameCard">${dino.species}</p> <img src="images/${dino.species}.png" alt="dino1" class="dinoImg" /> <div id="fact">${dino.fact}</div> `;
+        }
         newDiv.setAttribute('id', 'card' + i);
         grid.appendChild(newDiv);
         i += 1;
