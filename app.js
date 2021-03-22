@@ -1,4 +1,5 @@
 const compareButton = document.getElementById('compareButton');
+const againButton = document.getElementById('ab');
 const enterHeight = document.getElementById('enterYourHeight');
 const enterWeight = document.getElementById('enterYourWeight');
 const inputName = document.getElementById('inputName');
@@ -186,20 +187,43 @@ function createDinoArray(units) {
 }
 
 // Add tiles to DOM
+let units = 'm'; //metric by default
 function addTilesDOM() {
-    const dinoArray = createDinoArray('i');
+    const dinoArray = createDinoArray(units);
     let i = 1;
     dinoArray.forEach(function (dino) {
         const newDiv = document.createElement('div');
         if (dino === 'human') {
             newDiv.innerHTML = `<p class="nameCard">${human.name}</p> <img src="images/${human.species}.png" alt="dino1" class="dinoImg" />`;
         } else {
-            newDiv.innerHTML = `<p class="nameCard">${dino.species}</p> <img src="images/${dino.species}.png" alt="dino1" class="dinoImg" /> <div id="fact">${dino.fact}</div> `;
+            newDiv.innerHTML = `<p class="nameCard">${
+                dino.species
+            }</p> <img src="images/${
+                dino.species
+            }.png" alt="dino1" class="dinoImg" /> <div id="fact">${pickRandomFact(
+                dino
+            )}</div> `;
         }
         newDiv.setAttribute('id', 'card' + i);
         grid.appendChild(newDiv);
         i += 1;
     });
+}
+
+//function that picks random fact related to human
+function pickRandomFact(dino) {
+    const outcomes = [
+        dino.fact,
+        dino.compareHeight(human.height),
+        dino.compareDiet(human.diet),
+        dino.compareWeight(human.weight),
+    ];
+    const random = Math.floor(Math.random() * outcomes.length);
+    if (dino.species === 'Pigeon') {
+        return outcomes[0];
+    } else {
+        return outcomes[random];
+    }
 }
 
 // Remove form from screen
@@ -212,25 +236,26 @@ function displayGrid() {
     addTilesDOM();
 }
 
+function again() {
+    grid.style.display = 'none';
+    card.style.display = 'unset';
+    footer.style.position = 'absolute';
+}
+
 // On button click, prepare and display infographic
 compareButton.addEventListener('click', displayGrid);
+againButton.addEventListener('click', again);
 
 // change units
 function changeToImperial() {
     enterWeight.innerHTML = 'Enter your weight: (lbs)';
-    enterHeight.innerHTML = 'Enter your height: (Feet)';
+    enterHeight.innerHTML = 'Enter your height: (in)';
+    units = 'i';
 }
 function changeToMetric() {
     enterWeight.innerHTML = 'Enter your weight: (kg)';
     enterHeight.innerHTML = 'Enter your height: (cm)';
+    units = 'm';
 }
 
 DinoConstructor.prototype = protoDino;
-
-const velociraptor = new DinoConstructor(jsonDinoData()[6], 'i');
-
-console.log(velociraptor);
-console.log(velociraptor.compareWeight(120));
-console.log(velociraptor.compareHeight(70.8));
-console.log(velociraptor.compareDiet('carnivore'));
-console.log(createDinoArray('i'));

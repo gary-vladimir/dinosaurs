@@ -157,6 +157,13 @@ footer {
     line-height: 50px;
     text-align: center;
     border: 1px solid white;
+    transition: 0.3s;
+}
+
+#ab:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
 #fact {
