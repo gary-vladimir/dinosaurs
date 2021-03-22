@@ -192,18 +192,20 @@ function addTilesDOM() {
     const dinoArray = createDinoArray(units);
     let i = 1;
     dinoArray.forEach(function (dino) {
+        let title = '';
+        let image = '';
+        let fact = '';
         const newDiv = document.createElement('div');
         if (dino === 'human') {
-            newDiv.innerHTML = `<p class="nameCard">${human.name}</p> <img src="images/${human.species}.png" alt="dino1" class="dinoImg" />`;
+            title = human.name;
+            image = 'human';
+            fact = '';
         } else {
-            newDiv.innerHTML = `<p class="nameCard">${
-                dino.species
-            }</p> <img src="images/${
-                dino.species
-            }.png" alt="dino1" class="dinoImg" /> <div id="fact">${pickRandomFact(
-                dino
-            )}</div> `;
+            title = dino.species;
+            image = dino.species;
+            fact = pickRandomFact(dino);
         }
+        newDiv.innerHTML = `<p class="nameCard">${title}</p> <img src="images/${image}.png" alt="dino1" class="dinoImg" /> <div id="fact">${fact}</div> `;
         newDiv.setAttribute('id', 'card' + i);
         grid.appendChild(newDiv);
         i += 1;
@@ -232,7 +234,6 @@ function displayGrid() {
     card.style.display = 'none';
     footer.style.position = 'unset';
     getHumanData();
-    console.log(human);
     addTilesDOM();
 }
 
